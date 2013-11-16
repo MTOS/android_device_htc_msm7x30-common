@@ -107,7 +107,37 @@ BOARD_USES_LEGACY_RIL := true
 
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
+
+# SELinux
 include device/qcom/sepolicy/sepolicy.mk
+
+BOARD_SEPOLICY_DIRS += \
+    device/htc/msm7x30-common/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    app.te \
+    bluetooth.te \
+    device.te \
+    domain.te \
+    drmserver.te \
+    file_contexts \
+    files \
+    file.te \
+    hci_init.te \
+    healthd.te \
+    init.te \
+    init_shell.te \
+    keystore.te \
+    kickstart.te \
+    mediaserver.te \
+    rild.te \
+    surfaceflinger.te \
+    system.te \
+    ueventd.te \
+    untrusted_app.te \
+    vold.te \
+    wpa.te \
+    wpa_socket.te
 
 # Sync framework
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
