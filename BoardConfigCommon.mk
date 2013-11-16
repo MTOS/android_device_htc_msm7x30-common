@@ -117,3 +117,32 @@ ENABLE_WEBGL := true
 
 #Device Settings
 BOARD_DEVICE_SETTINGS := device/htc/msm7x30-common/DeviceSettings
+
+# SELinux
+BOARD_SEPOLICY_DIRS += \
+    device/htc/msm7x30-common/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    app.te \
+    bluetooth.te \
+    device.te \
+    domain.te \
+    drmserver.te \
+    file_contexts \
+    files \
+    file.te \
+    hci_init.te \
+    healthd.te \
+    init.te \
+    init_shell.te \
+    keystore.te \
+    kickstart.te \
+    mediaserver.te \
+    rild.te \
+    surfaceflinger.te \
+    system.te \
+    ueventd.te \
+    untrusted_app.te \
+    vold.te \
+    wpa.te \
+    wpa_socket.te
