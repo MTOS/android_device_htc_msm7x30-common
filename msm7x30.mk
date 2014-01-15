@@ -67,6 +67,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    camera.msm7x30 \
     libsurfaceflinger_client
 
 # Display
