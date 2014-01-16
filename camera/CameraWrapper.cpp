@@ -33,9 +33,6 @@
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
 
-const char KEY_VIDEO_HDR[] = "video-hdr";
-const char KEY_VIDEO_HDR_VALUES[] = "video-hdr-values";
-
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
@@ -97,12 +94,12 @@ static int check_vendor_module()
 
 static char *camera_fixup_getparams(int id, const char *settings)
 {
-    int rotation = 0;
-    const char *captureMode = "normal";
-    const char *videoHdr = "false";
-
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
+
+    params.set("max-saturation", "10");
+    params.set("max-contrast", "10");
+    params.set("max-sharpness", "10");
 
 #if !LOG_NDEBUG
     ALOGV("%s: original parameters:", __FUNCTION__);
@@ -122,10 +119,6 @@ static char *camera_fixup_getparams(int id, const char *settings)
 
 static char *camera_fixup_setparams(int id, const char *settings)
 {
-    bool isVideo = false;
-    const char *sceneMode = "auto";
-    const char *videoHdr = "false";
-
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
 
