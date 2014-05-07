@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+TARGET_SPECIFIC_HEADER_PATH := device/htc/msm7x30-common/include
+
 # Common stuff
 DEVICE_PACKAGE_OVERLAYS += device/htc/msm7x30-common/overlay
 
