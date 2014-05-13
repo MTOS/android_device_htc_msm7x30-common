@@ -111,3 +111,6 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storag
 USE_SET_METADATA := false
 TARGET_FORCE_CPU_UPLOAD := true
 ENABLE_WEBGL := true
+
+#Device Settings
+BOARD_DEVICE_SETTINGS := device/htc/msm7x30-common/DeviceSettings
