@@ -111,7 +111,6 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun0/file
 
 # Misc
-USE_SET_METADATA := false
 TARGET_FORCE_CPU_UPLOAD := true
 ENABLE_WEBGL := true
 
