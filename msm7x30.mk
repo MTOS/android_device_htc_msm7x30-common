@@ -112,6 +112,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+
 # use high-density artwork where available
 PRODUCT_LOCALES += en
 PRODUCT_AAPT_CONFIG := normal hdpi
