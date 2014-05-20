@@ -114,6 +114,9 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storag
 # Misc
 TARGET_FORCE_CPU_UPLOAD := true
 ENABLE_WEBGL := true
+TARGET_BOOTANIMATION_USE_RGB565 := true
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
 #Device Settings
 BOARD_DEVICE_SETTINGS := device/htc/msm7x30-common/DeviceSettings
