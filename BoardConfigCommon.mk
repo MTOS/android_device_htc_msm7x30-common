@@ -47,6 +47,15 @@ BOARD_NEEDS_MEMORYHEAPPMEM := true
 BOARD_USES_PMEM_ADSP := true
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DNEEDS_VECTORIMPL_SYMBOLS
 
+# Dex-preoptimization
+ifeq ($(HOST_OS),linux)
+  ifeq ($(TARGET_BUILD_VARIANT),user)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+    endif
+  endif
+endif
+
 # Display
 BOARD_USES_LEGACY_QCOM_DISPLAY := true
 BOARD_EGL_CFG := device/htc/msm7x30-common/configs/egl.cfg
