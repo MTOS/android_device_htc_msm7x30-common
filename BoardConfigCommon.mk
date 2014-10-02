@@ -55,6 +55,7 @@ ifeq ($(HOST_OS),linux)
     endif
   endif
 endif
+DONT_DEXPREOPT_PREBUILTS := true
 
 # Display
 BOARD_USES_LEGACY_QCOM_DISPLAY := true
