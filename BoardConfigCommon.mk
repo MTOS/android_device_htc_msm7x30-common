@@ -121,7 +121,6 @@ BOARD_SEPOLICY_UNION += \
     domain.te \
     drmserver.te \
     file_contexts \
-    files \
     file.te \
     hci_init.te \
     healthd.te \
@@ -132,7 +131,7 @@ BOARD_SEPOLICY_UNION += \
     mediaserver.te \
     rild.te \
     surfaceflinger.te \
-    system.te \
+    system_server.te \
     ueventd.te \
     untrusted_app.te \
     vold.te \
