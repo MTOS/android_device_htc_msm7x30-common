@@ -135,8 +135,7 @@ BOARD_SEPOLICY_UNION += \
     ueventd.te \
     untrusted_app.te \
     vold.te \
-    wpa.te \
-    wpa_socket.te
+    wpa.te
 
 # Sync framework
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
