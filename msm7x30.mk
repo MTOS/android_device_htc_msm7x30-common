@@ -151,6 +151,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=1 \
     debug.mdpcomp.logs=0 \
     dev.pm.dyn_samplingrate=1 \
+    media.stagefright.use-awesome=true \
     ro.opengles.version=131072
 
 # we have enough storage space to hold precise GC data
