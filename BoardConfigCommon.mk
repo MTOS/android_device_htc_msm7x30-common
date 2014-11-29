@@ -30,7 +30,7 @@ TARGET_NO_BOOTLOADER := true
 # Architecture
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_VARIANT := scorpion
+TARGET_CPU_VARIANT := cortex-a8
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_LOWMEM := true
