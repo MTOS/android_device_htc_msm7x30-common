@@ -151,6 +151,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=1 \
     debug.mdpcomp.logs=0 \
     dev.pm.dyn_samplingrate=1 \
+    persist.sys.media.use-awesome=true \
     media.stagefright.use-awesome=true \
     ro.opengles.version=131072
 
