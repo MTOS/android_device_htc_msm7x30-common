@@ -14,8 +14,22 @@
 # limitations under the License.
 #
 
+# Overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
 # Common proprietary blobs
 $(call inherit-product-if-exists, vendor/htc/msm7x30-common/msm7x30-vendor.mk)
+
+# Wifi firmware
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
+
+# TWRP
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/root/sbin/choice_fn:recovery/root/sbin/choice_fn \
+    $(LOCAL_PATH)/recovery/root/sbin/detect_key:recovery/root/sbin/detect_key \
+    $(LOCAL_PATH)/recovery/root/sbin/htcbatt:recovery/root/sbin/htcbatt \
+    $(LOCAL_PATH)/recovery/root/sbin/offmode_charging:recovery/root/sbin/offmode_charging \
+    $(LOCAL_PATH)/recovery/root/sbin/power_test:recovery/root/sbin/power_test
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -32,15 +46,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
-# media config xml file
-PRODUCT_COPY_FILES += \
-    device/htc/msm7x30-common/media_profiles.xml:system/etc/media_profiles.xml \
-    device/htc/msm7x30-common/media_codecs.xml:system/etc/media_codecs.xml \
-    device/htc/msm7x30-common/audio_policy.conf:system/etc/audio_policy.conf
-
-# Wifi firmware
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
-
 # Device-Specific HALs
 PRODUCT_PACKAGES += \
     lights.msm7x30 \
@@ -50,41 +55,77 @@ PRODUCT_PACKAGES += \
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
-    audio.primary.msm7x30 \
+    audio.usb.default \
     audio_policy.msm7x30 \
+    audio.primary.msm7x30 \
+    libaudio-resampler \
     libaudioutils
 
-# Video
+# Audio policy config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+
+# Camera
+PRODUCT_PACKAGES += \
+    libsurfaceflinger_client
+
+# Display
 PRODUCT_PACKAGES += \
     copybit.msm7x30 \
     gralloc.msm7x30 \
-    hwcomposer.msm7x30
+    hwcomposer.msm7x30 \
+    libgenlock \
+    memtrack.msm7x30
 
-# QCOM OMX
+# GPS
 PRODUCT_PACKAGES += \
-    libstagefrighthw \
-    libOmxCore \
-    libmm-omxcore \
-    libdivxdrmdecrypt \
-    libOmxVdec \
-    libOmxVenc
+    gps.msm7x30
 
-# Misc
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm7x30
+
+# Media
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+
+# OMX
+PRODUCT_PACKAGES += \
+    libdashplayer \
+    libOmxVdec \
+    libOmxVenc \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
+    libstagefrighthw
+
+# Power HAL
+PRODUCT_PACKAGES += \
+    power.msm7x30
+
+# Sensors
+PRODUCT_PACKAGES += \
+    sensors.msm7x30
+
+# USB
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory
+
+# Wifi
 PRODUCT_PACKAGES += \
     libnetcmdiface \
-    com.android.future.usb.accessory \
-    libsurfaceflinger_client
-
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    VisualizationWallpapers \
-    librs_jni
+    macloader \
+    dhcpcd.conf \
+    hostapd \
+    wpa_supplicant \
+    wpa_supplicant.conf
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
+    e2fsck \
     setup_fs
 
 # Common build.prop overrides
@@ -96,7 +137,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.lockprof.threshold=500 \
     dalvik.vm.dexopt-flags=m=y \
     ro.zygote.disable_gl_preload=true \
-    ro.config.low_ram=true \
     persist.sys.usb.config=mass_storage,adb
 
 # msm7x30 specific overrides
