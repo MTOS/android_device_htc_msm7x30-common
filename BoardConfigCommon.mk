@@ -92,6 +92,7 @@ BOARD_USES_LEGACY_RIL := true
 
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
+include device/qcom/sepolicy/sepolicy.mk
 
 # Sync framework
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
