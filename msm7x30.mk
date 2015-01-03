@@ -134,26 +134,27 @@ PRODUCT_PACKAGES += \
 
 # Common build.prop overrides
 PRODUCT_PROPERTY_OVERRIDES += \
+    com.qc.hardware=true \
+    debug.composition.type=dyn \
+    debug.egl.hw=1 \
+    debug.mdpcomp.maxlayer=3 \
+    debug.sf.hw=1 \
+    dev.pm.dyn_samplingrate=1 \
+    dalvik.vm.lockprof.threshold=500 \
+    dalvik.vm.dexopt-flags=m=y \
+    media.stagefright.use-awesome=true \
+    persist.hwc.mdpcomp.enable=false \
+    persist.sys.media.use-awesome=true \
+    persist.sys.usb.config=mass_storage,adb \
     ro.com.google.locationfeatures=1 \
     ro.com.google.networklocation=1 \
     ro.com.google.gmsversion=4.0_r1 \
+    ro.config.low_ram=true \
+    ro.opengles.version=131072 \
     ro.setupwizard.enable_bypass=1 \
-    dalvik.vm.lockprof.threshold=500 \
-    dalvik.vm.dexopt-flags=m=y \
-    ro.zygote.disable_gl_preload=true \
-    persist.sys.usb.config=mass_storage,adb
-
-# msm7x30 specific overrides
-PRODUCT_PROPERTY_OVERRIDES += \
     ro.sys.fw.bg_apps_limit=12 \
-    com.qc.hardware=true \
-    debug.egl.hw=1 \
-    debug.sf.hw=1 \
-    debug.mdpcomp.logs=0 \
-    dev.pm.dyn_samplingrate=1 \
-    persist.sys.media.use-awesome=true \
-    media.stagefright.use-awesome=true \
-    ro.opengles.version=131072
+    ro.zygote.disable_gl_preload=true \
+    wifi.interface=wlan0 \
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise

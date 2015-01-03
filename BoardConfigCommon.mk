@@ -22,6 +22,7 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_LOWMEM := true
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := scorpion
 TARGET_CPU_SMP := false
@@ -115,15 +116,18 @@ TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 BOARD_DEVICE_SETTINGS := device/htc/msm7x30-common/DeviceSettings
 
 # TWRP
-DEVICE_RESOLUTION := 480x800
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TW_NO_SCREEN_BLANK := true
-TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
+DEVICE_RESOLUTION := 480x800
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TARGET_RECOVERY_INITRC := device/htc/msm7x30-common/recovery/root/init.rc
-TW_USE_TOOLBOX := true
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_EXCLUDE_SUPERSU := true
+TW_EXCLUDE_MTP := true
+TW_FLASH_FROM_STORAGE := true
+TW_NO_CPU_TEMP := true
+TW_NO_SCREEN_BLANK := true
+TW_USE_TOOLBOX := true
 
 # Usb
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
