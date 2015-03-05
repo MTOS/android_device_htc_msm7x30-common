@@ -115,25 +115,32 @@ BOARD_SEPOLICY_DIRS += \
     device/htc/msm7x30-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-    app.te \
     bluetooth.te \
+    bootanim.te \
     device.te \
-    domain.te \
-    drmserver.te \
-    file_contexts \
     file.te \
-    hci_init.te \
-    healthd.te \
-    init.te \
+    file_contexts \
+    genfs_contexts \
     init_shell.te \
-    keystore.te \
-    kickstart.te \
+    kernel.te \
+    keypad_dev.te \
+    macloader.te \
     mediaserver.te \
+    mm-qcamerad.te \
+    mpdecision.te \
+    netmgrd.te \
+    orientationd.te \
+    platform_app.te \
+    qmuxd.te \
     rild.te \
+    rmt_storage.te \
     surfaceflinger.te \
+    sysinit.te \
+    system_app.te \
     system_server.te \
+    thermal-engine.te \
+    thermald.te \
     ueventd.te \
-    untrusted_app.te \
     vold.te \
     wpa.te
 
