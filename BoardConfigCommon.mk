@@ -81,6 +81,7 @@ BOARD_VENDOR_QCOM_AMSS_VERSION := 1200
 TARGET_SPECIFIC_HEADER_PATH := device/htc/msm7x30-common/include
 
 # Kernel
+BOARD_KERNEL_CMDLINE := no_console_suspend=1 androidboot.selinux=permissive androidboot.hardware=qcom
 BUILD_KERNEL := true
 TARGET_KERNEL_SOURCE := kernel/htc/msm7x30-3.0
 TARGET_KERNEL_NO_MODULES := true
@@ -166,6 +167,7 @@ TW_USE_TOOLBOX := true
 
 # Usb
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+BOARD_VOLD_MAX_PARTITIONS := 36
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun0/file
 
 # Wifi

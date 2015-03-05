@@ -109,6 +109,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm7x30
 
+# Ramdisk
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.qcom.rc \
+    init.qcom.usb.rc \
+    ueventd.qcom.rc
+
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.msm7x30
