@@ -186,9 +186,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.strictmode.visual=0 \
     persist.sys.strictmode.disable=1
 
-# we have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
-
 # Use ART small mode
 # http://source.android.com/devices/tech/dalvik/configure.html#with_art_small_mode
 PRODUCT_PROPERTY_OVERRIDES += \
