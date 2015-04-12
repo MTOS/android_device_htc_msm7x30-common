@@ -29,6 +29,12 @@ TARGET_CPU_SMP := false
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 BOARD_USES_LEGACY_MMAP := true
 
+# Boot Animation
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+TARGET_BOOTANIMATION_USE_RGB565 := true
+TARGET_BOOTANIMATION_HALF_RES := true
+
 # Bootloader
 TARGET_NO_BOOTLOADER := true
 
@@ -64,7 +70,6 @@ ifeq ($(USE_DEXPREOPT),true)
         endif
     endif
 endif
-
 # Display
 BOARD_USES_LEGACY_QCOM_DISPLAY := true
 BOARD_EGL_CFG := device/htc/msm7x30-common/configs/egl.cfg
