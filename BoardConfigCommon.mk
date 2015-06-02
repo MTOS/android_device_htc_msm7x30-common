@@ -51,14 +51,15 @@ COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DNO_UPDATE_PREVIEW
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Dex-preoptimization
-ifeq ($(HOST_OS),linux)
-  ifeq ($(TARGET_BUILD_VARIANT),user)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
+ifeq ($(USE_DEXPREOPT),true)
+    # Enable dex-preoptimization to speed up first boot sequence
+    ifeq ($(HOST_OS),linux)
+        ifeq ($(WITH_DEXPREOPT),)
+            WITH_DEXPREOPT := true
+            WITH_DEXPREOPT_COMP := true
+        endif
     endif
-  endif
 endif
-DONT_DEXPREOPT_PREBUILTS := true
 
 # Display
 BOARD_USES_LEGACY_QCOM_DISPLAY := true
@@ -92,7 +93,6 @@ BOARD_KERNEL_PAGE_SIZE := 4096
 BOARD_FLASH_BLOCK_SIZE := 262144
 TARGET_KERNEL_CONFIG := evervolv_$(TARGET_BOOTLOADER_BOARD_NAME)_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/msm7x30-3.0
-TARGET_KERNEL_NO_MODULES := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -111,9 +111,9 @@ TARGET_NEEDS_PRELINK_SUPPORT := true
 BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
+RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_DEVICE_DIRS += device/htc/msm7x30-common
 TARGET_RECOVERY_FSTAB = device/htc/msm7x30-common/rootdir/etc/fstab.qcom
-RECOVERY_FSTAB_VERSION := 2
 
 # Ril
 BOARD_USE_NEW_LIBRIL_HTC := true
@@ -169,15 +169,14 @@ BOARD_DEVICE_SETTINGS := device/htc/msm7x30-common/DeviceSettings
 # TWRP
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
-DEVICE_RESOLUTION := 480x800
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TARGET_RECOVERY_INITRC := device/htc/msm7x30-common/recovery/root/init.rc
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_EXCLUDE_SUPERSU := true
 TW_EXCLUDE_MTP := true
 TW_FLASH_FROM_STORAGE := true
 TW_NO_CPU_TEMP := true
 TW_NO_SCREEN_BLANK := true
+TW_THEME := portrait_hdpi
 TW_USE_TOOLBOX := true
 
 # Usb
@@ -197,4 +196,6 @@ WIFI_DRIVER_FW_PATH_STA := "/system/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_P2P := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_MODULE_NAME := bcmdhd
+WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/bcmdhd.ko"
 BOARD_LEGACY_NL80211_STA_EVENTS := true
