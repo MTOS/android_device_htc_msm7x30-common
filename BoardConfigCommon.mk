@@ -72,10 +72,15 @@ TARGET_QCOM_LEGACY_OMX := true
 TARGET_USES_ION := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK
 
+# FS
+BOARD_HAS_LARGE_FILESYSTEM := true
+TARGET_USERIMAGES_USE_EXT4 := true
+
 # GPS
 TARGET_QCOM_GPS_VARIANT := legacy
 BOARD_USES_QCOM_GPS := true
 BOARD_VENDOR_QCOM_AMSS_VERSION := 1200
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOOTLOADER_BOARD_NAME)
 
 # Includes
 TARGET_SPECIFIC_HEADER_PATH := device/htc/msm7x30-common/include
@@ -83,6 +88,9 @@ TARGET_SPECIFIC_HEADER_PATH := device/htc/msm7x30-common/include
 # Kernel
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 androidboot.selinux=permissive androidboot.hardware=qcom
 BUILD_KERNEL := true
+BOARD_KERNEL_PAGE_SIZE := 4096
+BOARD_FLASH_BLOCK_SIZE := 262144
+TARGET_KERNEL_CONFIG := evervolv_$(TARGET_BOOTLOADER_BOARD_NAME)_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/msm7x30-3.0
 TARGET_KERNEL_NO_MODULES := true
 
@@ -102,12 +110,19 @@ TARGET_NEEDS_PRELINK_SUPPORT := true
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
 
+# Recovery
+TARGET_RECOVERY_DEVICE_DIRS += device/htc/msm7x30-common
+TARGET_RECOVERY_FSTAB = device/htc/msm7x30-common/rootdir/etc/fstab.qcom
+RECOVERY_FSTAB_VERSION := 2
+
 # Ril
 BOARD_USE_NEW_LIBRIL_HTC := true
 BOARD_USES_LEGACY_RIL := true
 
-# Qualcomm support
-BOARD_USES_QCOM_HARDWARE := true
+# SDCard
+BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
+BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1
+BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
