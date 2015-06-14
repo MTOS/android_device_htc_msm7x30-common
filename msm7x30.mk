@@ -18,7 +18,7 @@
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Common proprietary blobs
-$(call inherit-product-if-exists, vendor/htc/msm7x30-common/msm7x30-vendor.mk)
+$(call inherit-product, vendor/htc/msm7x30-common/msm7x30-vendor.mk)
 
 # Wifi firmware
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
@@ -39,7 +39,7 @@ PRODUCT_PACKAGES += \
 
 # Audio policy config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -57,10 +57,6 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm7x30
-
-# Lights
-PRODUCT_PACKAGES += \
-    lights.msm7x30
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -98,20 +94,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
-# Power HAL
-PRODUCT_PACKAGES += \
-    power.msm7x30
-
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
     init.qcom.usb.rc \
     ueventd.qcom.rc
-
-# Sensors
-PRODUCT_PACKAGES += \
-    sensors.msm7x30
 
 # USB
 PRODUCT_PACKAGES += \
@@ -189,7 +177,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Use ART small mode
 # http://source.android.com/devices/tech/dalvik/configure.html#with_art_small_mode
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-filter=balanced \
+    dalvik.vm.dex2oat-filter=interpret-only \
     dalvik.vm.dex2oat-flags=--no-watch-dog \
     dalvik.vm.image-dex2oat-filter=speed
 

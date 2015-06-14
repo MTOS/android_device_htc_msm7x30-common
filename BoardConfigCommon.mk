@@ -140,39 +140,6 @@ BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += \
-    device/htc/msm7x30-common/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    bluetooth.te \
-    bootanim.te \
-    device.te \
-    file.te \
-    file_contexts \
-    genfs_contexts \
-    init_shell.te \
-    kernel.te \
-    keypad_dev.te \
-    macloader.te \
-    mediaserver.te \
-    mm-qcamerad.te \
-    mpdecision.te \
-    netmgrd.te \
-    orientationd.te \
-    platform_app.te \
-    qmuxd.te \
-    rild.te \
-    rmt_storage.te \
-    surfaceflinger.te \
-    sysinit.te \
-    system_app.te \
-    system_server.te \
-    thermal-engine.te \
-    thermald.te \
-    ueventd.te \
-    vold.te \
-    wpa.te
-
 # Sync framework
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
