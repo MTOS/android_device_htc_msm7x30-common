@@ -70,6 +70,8 @@ ifeq ($(USE_DEXPREOPT),true)
         endif
     endif
 endif
+DONT_DEXPREOPT_PREBUILTS := true
+
 # Display
 BOARD_USES_LEGACY_QCOM_DISPLAY := true
 BOARD_EGL_CFG := device/htc/msm7x30-common/configs/egl.cfg
@@ -86,6 +88,7 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK
 # FS
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 # GPS
 TARGET_QCOM_GPS_VARIANT := legacy
@@ -119,6 +122,9 @@ TARGET_DISABLE_ARM_PIE := true
 
 # Prelink support
 TARGET_NEEDS_PRELINK_SUPPORT := true
+
+# Power
+TARGET_POWERHAL_VARIANT := cm
 
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true

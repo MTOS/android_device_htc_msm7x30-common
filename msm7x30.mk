@@ -18,7 +18,7 @@
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Common proprietary blobs
-$(call inherit-product, vendor/htc/msm7x30-common/msm7x30-vendor.mk)
+$(call inherit-product-if-exists, vendor/htc/msm7x30-common/msm7x30-vendor.mk)
 
 # Wifi firmware
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
@@ -39,7 +39,7 @@ PRODUCT_PACKAGES += \
 
 # Audio policy config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -57,6 +57,10 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm7x30
+
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm7x30
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -101,6 +105,10 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     ueventd.qcom.rc
 
+# Sensors
+PRODUCT_PACKAGES += \
+    sensors.msm7x30
+
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
@@ -118,7 +126,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     make_ext4fs \
     e2fsck \
-    setup_fs
+    setup_fs \
+    mkfs.f2fs \
+    fsck.f2fs \
+    fibmap.f2fs \
+    f2fstat*
 
 # Common build.prop overrides
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -177,9 +189,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Use ART small mode
 # http://source.android.com/devices/tech/dalvik/configure.html#with_art_small_mode
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-filter=interpret-only \
-    dalvik.vm.dex2oat-flags=--no-watch-dog \
-    dalvik.vm.image-dex2oat-filter=speed
+	dalvik.vm.dex2oat-filter=interpret-only \
+	dalvik.vm.dex2oat-flags=--no-watch-dog \
+	dalvik.vm.image-dex2oat-filter=speed
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
