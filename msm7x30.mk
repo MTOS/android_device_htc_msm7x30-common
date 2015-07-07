@@ -17,6 +17,9 @@
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+# System Properties
+-include $(LOCAL_PATH)/system_prop.mk
+
 # Common proprietary blobs
 $(call inherit-product, vendor/htc/msm7x30-common/msm7x30-vendor.mk)
 
@@ -123,61 +126,6 @@ PRODUCT_PACKAGES += \
     fsck.f2fs \
     fibmap.f2fs \
     f2fstat*
-
-# Common build.prop overrides
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.strictmode.visual=0 \
-    ro.gsm.2nd_data_retry_config=max_retries=3,2000,2000,2000 \
-    com.qc.hardware=true \
-    rild.libpath=/system/lib/libhtc_ril.so \
-    ro.telephony.ril.v3=signalstrengthgsm \
-    ro.ril.ecc.HTC-GCC=999,112,997 \
-    ro.ril.ecc.HTC-WWE=999 \
-    ro.ril.ecc.HTC-ELL=92,93,94 \
-    ro.ril.enable.a52.HTC-ITA=1 \
-    ro.ril.enable.a53.HTC-ITA=1 \
-    ro.ril.enable.a52=0 \
-    ro.ril.enable.a53=1 \
-    ro.ril.disable.fd.plmn.prefix=23402,23410,23411 \
-    net.tcp.buffersize.hsdpa=4094,87380,393216,4096,16384,110208 \
-    ro.ril.enable.sdr=1 \
-    ro.ril.enable.amr.wideband=0 \
-    ro.ril.enable.dtm=0 \
-    ro.ril.gprsclass=12 \
-    ro.ril.hsdpa.category=10 \
-    ro.ril.hsupa.category=6 \
-    ro.ril.hsxpa=2 \
-    ro.ril.def.agps.mode=2 \
-    ro.ril.disable.power.collapse=1 \
-    ro.telephony.default_network=0 \
-    mobiledata.interfaces=gannet0,rmnet0,rmnet1,rmnet2 \
-    ro.use_data_netmgrd=true \
-    wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=120 \
-    ro.tethering.kb_disconnect=1 \
-    ro.opengles.version=131072 \
-    debug.composition.type=gpu \
-    debug.sf.hw=1 \
-    debug.egl.hw=1 \
-    debug.egl.recordable.rgba8888=1 \
-    persist.sys.media.use-awesome=true \
-    media.stagefright.use-awesome=true \
-    lpa.decode=false \
-    lpa.use-stagefright=false \
-    af.resampler.quality=255 \
-    camera2.portability.force_api=1 \
-    persist.sys.usb.config=mtp \
-    ro.vold.umsdirtyratio=20 \
-    ro.sys.fw.bg_apps_limit=16 \
-    ro.config.max_starting_bg=8 \
-    config.disable_atlas=true \
-    ro.ksm.default=1 \
-    ro.setupwizard.enable_bypass=1 \
-    ro.com.google.locationfeatures=1 \
-    ro.product.locale.language=en \
-    ro.product.locale.region=US \
-    persist.sys.strictmode.visual=0 \
-    persist.sys.strictmode.disable=1
 
 # Use ART small mode
 # http://source.android.com/devices/tech/dalvik/configure.html#with_art_small_mode
