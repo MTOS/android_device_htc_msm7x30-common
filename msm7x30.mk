@@ -126,11 +126,11 @@ PRODUCT_PACKAGES += \
 
 # Common build.prop overrides
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=240 \
     persist.sys.strictmode.visual=0 \
     ro.gsm.2nd_data_retry_config=max_retries=3,2000,2000,2000 \
     com.qc.hardware=true \
     rild.libpath=/system/lib/libhtc_ril.so \
+    ro.telephony.ril.v3=signalstrengthgsm \
     ro.ril.ecc.HTC-GCC=999,112,997 \
     ro.ril.ecc.HTC-WWE=999 \
     ro.ril.ecc.HTC-ELL=92,93,94 \
@@ -139,6 +139,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.enable.a52=0 \
     ro.ril.enable.a53=1 \
     ro.ril.disable.fd.plmn.prefix=23402,23410,23411 \
+    net.tcp.buffersize.hsdpa=4094,87380,393216,4096,16384,110208 \
     ro.ril.enable.sdr=1 \
     ro.ril.enable.amr.wideband=0 \
     ro.ril.enable.dtm=0 \
@@ -152,7 +153,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     mobiledata.interfaces=gannet0,rmnet0,rmnet1,rmnet2 \
     ro.use_data_netmgrd=true \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15 \
+    wifi.supplicant_scan_interval=120 \
     ro.tethering.kb_disconnect=1 \
     ro.opengles.version=131072 \
     debug.composition.type=gpu \
