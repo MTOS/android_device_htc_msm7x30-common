@@ -18,7 +18,7 @@
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Common proprietary blobs
-$(call inherit-product-if-exists, vendor/htc/msm7x30-common/msm7x30-vendor.mk)
+$(call inherit-product, vendor/htc/msm7x30-common/msm7x30-vendor.mk)
 
 # Wifi firmware
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
@@ -39,7 +39,7 @@ PRODUCT_PACKAGES += \
 
 # Audio policy config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -57,10 +57,6 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm7x30
-
-# Lights
-PRODUCT_PACKAGES += \
-    lights.msm7x30
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -104,10 +100,6 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.usb.rc \
     ueventd.qcom.rc
-
-# Sensors
-PRODUCT_PACKAGES += \
-    sensors.msm7x30
 
 # USB
 PRODUCT_PACKAGES += \
@@ -197,7 +189,7 @@ $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 # use high-density artwork where available
 PRODUCT_LOCALES += en
-PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
